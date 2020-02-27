@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{person.name}}--{{person.age}}</h2>
+        <h3>{{person.hobby}}</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <h3>{{mes}}</h3>
+        <div v-text='mes'></div>
+        <div v-text='person.name'></div>
+        <div v-html='htmlstr'></div>
+        <input type="text" v-model='mes'>
+        <button v-on:click="handleclick">on类型事件</button>
+        <button @click="handleclick">@类型事件</button>
+    </div>
+    <!-- <script src="https://cdn.bootcss.com/vue/2.6.10/vue.common.dev.js"></script> -->
+    <script src="./Observer.js"></script>
+    <script src="./MVue.js"></script>
+    <script>
+        let vm = new MVue({
+            el: "#app",
+            data: {
+                person: {
+                    name: "xz",
+                    age: "21",
+                    hobby: "node"
+                },
+                htmlstr: "我太难了",
+                mes: "学习MVVM实现原理"
+
+            },
+            methods: {
+                handleclick() {
+                    console.log(this)
+                    this.$data.person.name = "xp"
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
